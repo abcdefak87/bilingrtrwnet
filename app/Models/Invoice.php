@@ -55,4 +55,20 @@ class Invoice extends Model
     {
         return $this->hasMany(Payment::class);
     }
+
+    /**
+     * Mark invoice as paid.
+     *
+     * Updates the invoice status to 'paid' and sets the paid_at timestamp.
+     *
+     * @param Payment $payment The payment that paid this invoice
+     * @return void
+     */
+    public function markAsPaid(Payment $payment): void
+    {
+        $this->update([
+            'status' => 'paid',
+            'paid_at' => now(),
+        ]);
+    }
 }

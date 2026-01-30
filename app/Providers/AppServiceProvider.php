@@ -11,7 +11,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Register MikrotikService as singleton to maintain connection pool
+        $this->app->singleton(\App\Services\MikrotikService::class);
     }
 
     /**
